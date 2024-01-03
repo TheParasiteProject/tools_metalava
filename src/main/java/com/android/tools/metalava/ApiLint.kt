@@ -396,7 +396,8 @@ class ApiLint(private val codebase: Codebase, private val oldCodebase: Codebase?
         if (qualifiedName.startsWith("android.opengl") ||
             qualifiedName.startsWith("android.renderscript") ||
             qualifiedName.startsWith("android.database.sqlite.") ||
-            qualifiedName.startsWith("android.R.")
+            qualifiedName.startsWith("android.R.") ||
+            qualifiedName.startsWith("lineageos.platform.R.")
         ) {
             return
         }
@@ -439,7 +440,8 @@ class ApiLint(private val codebase: Codebase, private val oldCodebase: Codebase?
             qualified == "android.system.OsConstants" ||
             qualified == "android.media.MediaCodecInfo" ||
             qualified.startsWith("android.opengl.") ||
-            qualified.startsWith("android.R.")
+            qualified.startsWith("android.R.") ||
+            qualified.startsWith("lineageos.platform.R.")
         ) {
             return
         }
@@ -1719,7 +1721,9 @@ class ApiLint(private val codebase: Codebase, private val oldCodebase: Codebase?
             val qualifiedName = cls.qualifiedName()
             if (qualifiedName.startsWith("android.opengl.") ||
                 qualifiedName.startsWith("android.R.") ||
-                qualifiedName == "android.R"
+                qualifiedName.startsWith("lineageos.platform.R.") ||
+                qualifiedName == "android.R" ||
+                qualifiedName == "lineageos.platform.R"
             ) {
                 return
             }
