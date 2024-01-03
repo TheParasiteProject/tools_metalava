@@ -450,7 +450,8 @@ private constructor(
             qualifiedName.startsWith("android.opengl") ||
                 qualifiedName.startsWith("android.renderscript") ||
                 qualifiedName.startsWith("android.database.sqlite.") ||
-                qualifiedName.startsWith("android.R.")
+                qualifiedName.startsWith("android.R.") ||
+                qualifiedName.startsWith("lineageos.platform.R.")
         ) {
             return
         }
@@ -495,7 +496,8 @@ private constructor(
                 qualified == "android.system.OsConstants" ||
                 qualified == "android.media.MediaCodecInfo" ||
                 qualified.startsWith("android.opengl.") ||
-                qualified.startsWith("android.R.")
+                qualified.startsWith("android.R.") ||
+                qualified.startsWith("lineageos.platform.R.")
         ) {
             return
         }
@@ -1992,7 +1994,9 @@ private constructor(
             if (
                 qualifiedName.startsWith("android.opengl.") ||
                     qualifiedName.startsWith("android.R.") ||
-                    qualifiedName == "android.R"
+                    qualifiedName == "android.R" ||
+                    qualifiedName.startsWith("lineageos.platform.R.") ||
+                    qualifiedName == "lineageos.platform.R"
             ) {
                 return
             }
@@ -2203,7 +2207,8 @@ private constructor(
     }
 
     private fun checkResourceNames(cls: ClassItem, fields: Sequence<FieldItem>) {
-        if (!cls.qualifiedName().startsWith("android.R.")) {
+        if (!cls.qualifiedName().startsWith("android.R.")
+            || !cls.qualifiedName().startsWith("lineageos.platform.R.")) {
             return
         }
 
