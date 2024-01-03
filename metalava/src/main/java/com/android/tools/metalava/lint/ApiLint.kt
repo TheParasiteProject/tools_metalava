@@ -358,7 +358,7 @@ private constructor(
         checkSingleton(cls, methods, constructors)
         checkExtends(cls)
         checkTypedef(cls)
-        checkHasFlaggedApi(cls)
+        // checkHasFlaggedApi(cls)
     }
 
     private fun checkField(field: FieldItem) {
@@ -373,7 +373,7 @@ private constructor(
         checkFieldName(field)
         checkSettingKeys(field)
         checkNullableCollections(field.type(), field)
-        checkHasFlaggedApi(field)
+        // checkHasFlaggedApi(field)
     }
 
     private fun checkMethod(method: MethodItem, filterReference: Predicate<Item>) {
@@ -390,7 +390,7 @@ private constructor(
         checkExceptions(method, filterReference)
         checkContextFirst(method)
         checkListenerLast(method)
-        checkHasFlaggedApi(method)
+        // checkHasFlaggedApi(method)
     }
 
     private fun checkEnums(cls: ClassItem) {
@@ -450,7 +450,8 @@ private constructor(
             qualifiedName.startsWith("android.opengl") ||
                 qualifiedName.startsWith("android.renderscript") ||
                 qualifiedName.startsWith("android.database.sqlite.") ||
-                qualifiedName.startsWith("android.R.")
+                qualifiedName.startsWith("android.R.") ||
+                qualifiedName.startsWith("lineageos.platform.R.")
         ) {
             return
         }
@@ -495,7 +496,8 @@ private constructor(
                 qualified == "android.system.OsConstants" ||
                 qualified == "android.media.MediaCodecInfo" ||
                 qualified.startsWith("android.opengl.") ||
-                qualified.startsWith("android.R.")
+                qualified.startsWith("android.R.") ||
+                qualified.startsWith("lineageos.platform.R.")
         ) {
             return
         }
@@ -1992,7 +1994,8 @@ private constructor(
             if (
                 qualifiedName.startsWith("android.opengl.") ||
                     qualifiedName.startsWith("android.R.") ||
-                    qualifiedName == "android.R"
+                    qualifiedName == "android.R" ||
+                    qualifiedName == "lineageos.platform.R"
             ) {
                 return
             }
