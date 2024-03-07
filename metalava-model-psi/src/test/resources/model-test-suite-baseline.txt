@@ -1,0 +1,37 @@
+com.android.tools.metalava.model.testsuite.BootstrapSourceModelProviderTest
+  200 - test TypeParameterList name strings[psi,java]
+
+com.android.tools.metalava.model.testsuite.typeitem.CommonTypeItemTest
+  check TypeItem asClass()[psi,java]
+
+com.android.tools.metalava.model.testsuite.typeitem.CommonTypeModifiersTest
+  Test implicit nullability of annotation members[psi,java]
+  Test implicit nullability of annotation members[psi,kotlin]
+  Test implicit nullability of constants[psi,java]
+  Test implicit nullability of constructor returns[psi,java]
+  Test implicit nullability of constructor returns[psi,kotlin]
+  Test implicit nullability of equals parameter[psi,java]
+  Test implicit nullability of toString[psi,java]
+  Test inner parameterized types with annotations[psi,java]
+  Test nullability of arrays[psi,java]
+  Test nullability of arrays[psi,kotlin]
+  Test nullability of classes with parameters[psi,java]
+  Test nullability of classes with parameters[psi,kotlin]
+  Test nullability of multi-dimensional arrays[psi,java]
+  Test nullability of multi-dimensional arrays[psi,kotlin]
+  Test nullability of outer classes[psi,java]
+  Test nullability of outer classes[psi,kotlin]
+  Test nullability of primitives[psi,java]
+  Test nullability of primitives[psi,kotlin]
+  Test nullability of simple classes[psi,java]
+  Test nullability of simple classes[psi,kotlin]
+  Test nullability of varargs[psi,java]
+  Test nullability of varargs[psi,kotlin]
+  Test nullability of wildcards[psi,java]
+  Test nullability of wildcards[psi,kotlin]
+  Test nullability set through item annotations[psi,java]
+  Test resetting nullability[psi,java]
+  Test resetting nullability[psi,kotlin]
+
+com.android.tools.metalava.model.testsuite.typeitem.CommonTypeStringTest
+  Type string[psi,java,null annotated parameterized inner type - annotated]

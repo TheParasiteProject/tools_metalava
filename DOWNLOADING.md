@@ -1,8 +1,8 @@
 # Checking out Metalava
 
-Metalava can be downloaded from the `metalava-master` manifest branch via `repo` as explained below
+Metalava can be downloaded from the `metalava-main` manifest branch via `repo` as explained below
 
-## To check out `metalava-master` using `repo`:
+## To check out `metalava-main` using `repo`:
 1. Install `repo` (Repo is a tool that makes it easier to download multiple Git repositories at once. For more information about Repo, see the [Repo Command Reference](https://source.android.com/setup/develop/repo))
 
 ```bash
@@ -22,14 +22,14 @@ git config --global user.email "you@example.com"
 3. Create a directory for your checkout (it can be any name)
 
 ```bash
-mkdir metalava-master
-cd metalava-master
+mkdir metalava-main
+cd metalava-main
 ```
 
 4. Use `repo` command to initialize the repository.
 
 ```bash
-repo init -u https://android.googlesource.com/platform/manifest -b metalava-master
+repo init -u https://android.googlesource.com/platform/manifest -b metalava-main
 ```
 
 5. Now your repository is configured to pull only what you need for building and running Metalava. Download the code (this may take some time; the checkout is about 1.7G):

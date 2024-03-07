@@ -16,36 +16,22 @@ package {
     default_applicable_licenses: ["Android-Apache-2.0"],
 }
 
-java_binary_host {
-    name: "metalava",
-    srcs: [
-        "src/main/java/**/*.java",
-        "src/main/java/**/*.kt",
-    ],
-    java_resource_dirs: ["src/main/resources/"],
+java_library_host {
+    name: "metalava-signature-reader",
     static_libs: [
-        "jsr305",
-        "jsr330",
-        "kotlin-reflect",
-        "metalava-tools-common-m2-deps",
-        "metalava-gradle-plugin-deps",
+        "metalava-model",
+        "metalava-model-text",
     ],
-    main_class: "com.android.tools.metalava.Driver",
-    target: {
-        host: {
-            dist: {
-                targets: ["sdk"],
-            },
-        },
-    },
+}
+
+// Make the version.properties file available for `metalava-main` in `metalava`
+// directory.
+filegroup {
+    name: "metalava-version",
     visibility: [
-        // Metalava is linked by //vendor/xts/gts-tests/hostsidetests/api, but because it's a
-        // make project, soong's visibility won't apply. Soong also won't let you specify a
-        // subpackage of //vendor/ here. So let's just make it private.
-        // When //vendor/xts/gts-tests/hostsidetests/api migrates to Android.bp, we need to
-        // open metalava to //vendor:__subpackages__.
-        "//visibility:private",
+        "//tools/metalava:__subpackages__",
     ],
+    srcs: ["version.properties"],
 }
 
 java_library {
@@ -74,8 +60,9 @@ genrule {
     srcs: [
         "stub-annotations/src/main/java/**/*.java",
     ],
-    cmd: "($(location metalava) --no-banner --copy-annotations tools/metalava/stub-annotations " +
-        "$(genDir)/private-stub-annotations) && ($(location soong_zip) -o $(out) -C $(genDir) -D $(genDir))",
+    cmd: "($(location metalava) make-annotations-package-private " +
+        "tools/metalava/stub-annotations/src/main/java $(genDir)/private-stub-annotations) " +
+        "&& ($(location soong_zip) -o $(out) -C $(genDir) -D $(genDir))",
     out: [
         "private-stub-annotations.srcjar",
     ],

@@ -51,7 +51,7 @@ First build it with:
 
 Then run it with:
 
-    $ ../../out/metalava/install/metalava/bin/metalava
+    $ ../../out/metalava/metalava/build/install/metalava/bin/metalava
                     _        _
      _ __ ___   ___| |_ __ _| | __ ___   ____ _
     | '_ ` _ \ / _ \ __/ _` | |/ _` \ \ / / _` |
@@ -72,6 +72,23 @@ Then run it with:
     ...
 
 (*output truncated*)
+
+### Maven artifacts
+
+To build Metalava's Maven artifacts including `.pom` and `.module` metadata, run:
+
+    $ ./gradlew createArchive
+
+Then locate the artifacts under `../../out/dist/repo/m2repository`.
+
+### Integration testing
+
+To build and run Metalava against a pinned version of an AndroidX library you can
+run the following:
+
+    $ INTEGRATION=true ./gradlew integration:run --rerun
+
+Details on what runs are in `integration/build.gradle.kts`.
 
 ## Features
 

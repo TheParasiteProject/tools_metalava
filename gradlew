@@ -1,5 +1,16 @@
 #!/usr/bin/env sh
 
+# Metalava modification start ------------------------------------------------
+SCRIPT_PATH="$(cd $(dirname $0) && pwd -P)"
+if [ -n "$OUT_DIR" ] ; then
+    mkdir -p "$OUT_DIR"
+    OUT_DIR="$(cd $OUT_DIR && pwd -P)"
+else
+    CHECKOUT_ROOT="$(cd $SCRIPT_PATH/../.. && pwd -P)"
+    export OUT_DIR="$CHECKOUT_ROOT/out"
+fi
+# Metalava modification end---------------------------------------------------
+
 ##############################################################################
 ##
 ##  Gradle start up script for UN*X
@@ -72,7 +83,7 @@ if [ $darwin == "true" ]; then
 else
     plat="linux"
 fi
-export JAVA_HOME="$APP_HOME/../../prebuilts/jdk/jdk11/$plat-x86"
+export JAVA_HOME="$APP_HOME/../../prebuilts/jdk/jdk17/$plat-x86"
 # --------------------- end of metalava changes ------------------------
 
 # Determine the Java command to use to start the JVM.
